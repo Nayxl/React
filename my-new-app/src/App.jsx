@@ -5,13 +5,24 @@ import './App.css'
 import './MyTitle'
 import PokemonCards from './components/PokemonCards'
 
+const pokemonList = [
+  {
+    name: "bulbasaur",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+  },
+  {
+    name: "mew",
+  },
+];
+
 function App() {
   const [count, setCount] = useState(0)
-
+  let pokemon = pokemonList[0];
   return (
     <div className="App">
       
-       <PokemonCards/>
+       <PokemonCards name={pokemon.name} imgSrc={pokemon.imgSrc}/>
     </div>
   )
 }

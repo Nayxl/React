@@ -1,62 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import './MyTitle'
-import PokemonCards from './components/PokemonCards'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import "./MyTitle";
+import PokemonCard from "./components/PokemonCard";
+import NavBar from "./NavBar";
 
-
-
-  const pokemonList = [
-    {
-        name: "bulbasaur",
-        imgSrc:
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-      },
-      {
-        name: "charmander",
-        imgSrc:
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-      },
-      {
-        name: "squirtle",
-        imgSrc:
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
-      },
-      {
-        name: "pikachu",
-        imgSrc:
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
-      },
-      {
-        name: "mew",
-      },
-    ];
+const pokemonList = [
+  {
+    name: "bulbasaur",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+  },
+  {
+    name: "charmander",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+  },
+  {
+    name: "squirtle",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+  },
+  {
+    name: "pikachu",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+  },
+  {
+    name: "mew",
+  },
+];
 
 function App() {
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(0);
   let pokemon = pokemonList[index];
   const previousPokemon = () => {
-    if (index > 0){
-      setIndex(index-1);
+    if (index > 0) {
+      setIndex(index - 1);
+      alert(index);
     }
   };
   const nextPokemon = () => {
-    if (index < pokemonList.length - 1){
-      setIndex(index+1);
+    if (index < pokemonList.length - 1) {
+      setIndex(index + 1);
     }
-  }
+  };
 
   return (
     <div className="App">
-      
-       <PokemonCards name={pokemon.name} imgSrc={pokemon.imgSrc}/>
-    <button onClick={previousPokemon}>Précédent</button>
-    <button onClick={nextPokemon}>Suivant</button>
+      <NavBar previousPokemon={previousPokemon} nextPokemon={nextPokemon} />
+      <PokemonCard name={pokemon.name} imgSrc={pokemon.img} />
     </div>
-  )
+  );
 }
 
-
-export default App
-
+export default App;
